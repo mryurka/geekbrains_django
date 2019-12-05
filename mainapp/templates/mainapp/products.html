@@ -3,15 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="/static/img/favicon.ico"/>
-    <link rel="stylesheet" href="/static/css/products.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Продукты</title>
 </head>
 <body>
-<div>
-    <a href="{% url 'main' %}"> - Главная - </a>
-    <a href="{% url 'products' %}"> - Продукты - </a>
-    <a href="{% url 'contacts' %}"> - Контакты - </a>
+<div class="header">
+    <img class="logo" src="/static/img/logo.jpg" alt="Logo">
+    <ul class="menu">
+        <li><a href="{% url 'contacts' %}"> - Контакты - </a></li>
+        <li><a href="{% url 'products' %}"> - Продукты - </a></li>
+        <li><a href="{% url 'main' %}"> - Главная - </a></li>
+    </ul>
 </div>
-<h1 class="product">Продукты</h1>
+<h1 class="main">Продукты</h1>
+<div class="catalog">
+    <h1>Наши товары</h1>
+    <div class="goods" id="0" data-name="Телек" data-price="10000">
+        <img src="/static/img/Xiaomi-TV_small.jpg" alt="TV"><br>
+        <button>Купить телек</button>
+    </div>
+    <div class="goods" id="1" data-name="Мобилафон" data-price="20000">
+        <img src="/static/img/smartphone_small.jpg" alt="Phone"><br>
+        <button>Купить мобилафон</button>
+    </div>
+    <div class="goods" id="2" data-name="Робосос" data-price="15000">
+        <img src="/static/img/robosos_small.jpg" alt="Robosos"><br>
+        <button>Купить робосос</button>
+    </div>
+    <!--<div class="basket">
+        <table id="120">
+        </table>
+        <button>Очистить корзину</button>
+    </div>-->
+</div>
+<div class="footer">
+    <p>
+        Все права защищены &copy;&nbsp;2019 г. - <a href="https://geekbrains.ru" target="_blank">Go to geekbrains...</a>
+    </p>
+</div>
 </body>
 </html>

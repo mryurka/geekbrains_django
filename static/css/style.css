@@ -1,0 +1,195 @@
+body {
+    background-color: #f8f8f8;
+}
+.logo {
+    float: left;
+    margin: 15px 10px;
+    border: none;
+    outline: none;
+}
+.header{
+    height: 160px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    background-image: url("/static/img/header_back.png");
+
+}
+
+.menu li {
+    font-size: 18px;
+    font-style: italic;
+    list-style: none;
+    height: 25px;
+    border: #0f6674 solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px;
+    display: inline-block;
+    float: right;
+}
+
+.menu > li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #117a8b;
+}
+
+.menu > li a:hover{
+    color: #6f42c1;
+    font-weight: bold;
+}
+.main {
+    text-align: center;
+}
+h3 {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #eaeaea;
+}
+
+/*
+.specifications ul li{
+    color: #d39e00;
+    font-size: 16px;
+    line-height: 20px;
+    list-style-image: url("./images/Tick.png");
+}
+.description_block{
+    height: 250px;
+
+}
+.description_block img {
+    margin-left: 10px;
+    margin-right: 20px;
+    float: left;
+}
+*/
+
+.purchase_button {
+    border: 1px solid #117a8b; /* Рамка */
+    display: inline-block;
+    padding: 5px 15px; /* Поля */
+    text-decoration: none; /* Убираем подчёркивание */
+    color: #000; /* Цвет текста */
+  }
+.purchase_button:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
+    background: linear-gradient(to bottom, #fcfff4, #e9e9ce); /* Градиент */
+    color: #28a745;
+   }
+.purchase_button:active {
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
+    background: #28a745;
+    color: #fdfdfe;
+   }
+/*
+.description_block h3 {
+    margin-left: 250px;
+}
+.short_description {
+    color: #707070;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+}
+
+.full_description {
+    color: #484343;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+}
+
+.specifications:first-letter, .short_description:first-letter,
+.full_description:first-letter, .free_description:first-letter  {
+    font-size: 30px;
+    font-style: italic;
+    color: #bd2130;
+}
+
+.contact_form > input{
+    height: 30px;
+    width: 220px;
+    font-size: 22px;
+    color: #28a745;
+    text-transform: capitalize;
+}
+
+.contact_form > input[type="Email"]:focus {
+    height: 30px;
+    width: 220px;
+    font-size: 22px;
+    color: #bd2130;
+    background-color: #d39e00;
+    text-transform: capitalize;
+}
+
+a img {
+    outline: #6f42c1 2px solid;
+    outline-offset: 5px;
+}
+
+a img:hover {
+    outline: none;
+    // outline: transparent 2px solid;
+}
+*/
+
+.footer{
+    height: 90px;
+    background-color: #117a8b;
+    padding-top: 20px;
+    padding-right: 50px;
+    text-align: right;
+}
+
+.footer > p {
+    color: #95999c;
+    font-size: 22px;
+}
+/*
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    border: #6f42c1 solid 1px;
+    padding-left: 5px;
+
+}
+
+#itogo td {
+    color: #6f42c1;
+    text-align: right;
+}
+
+.four_by_five tr:first-child td:first-child {
+    height: 45px;
+}
+
+.container {
+    height: auto;
+    width: auto;
+    position: center;
+    background-color: transparent;
+}
+*/
+.catalog{
+    height: 200px;
+    padding: 5px 20px;
+}
+.catalog .goods{
+    float: left;
+    display: inline;
+    margin-right: 20px;
+    text-align: center;
+}
+/*
+div .basket{
+    min-height: 200px;
+    padding: 5px 20px;
+}
+*/

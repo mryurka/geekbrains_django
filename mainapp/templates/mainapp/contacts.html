@@ -3,15 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="/static/img/favicon.ico"/>
-    <link rel="stylesheet" href="/static/mainapp/css/styles.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Контакты</title>
 </head>
 <body>
-<div>
-    <a href="{% url 'main' %}"> - Главная - </a>
-    <a href="{% url 'products' %}"> - Продукты - </a>
-    <a href="{% url 'contacts' %}"> - Контакты - </a>
+<div class="header">
+    <img class="logo" src="/static/img/logo.jpg" alt="Logo">
+    <ul class="menu">
+        <li><a href="{% url 'contacts' %}"> - Контакты - </a></li>
+        <li><a href="{% url 'products' %}"> - Продукты - </a></li>
+        <li><a href="{% url 'main' %}"> - Главная - </a></li>
+    </ul>
 </div>
-<h1 class="test">Контакты</h1>
+<h1 class="main">Контакты</h1>
+<p>
+    Where is the addled comrade? <br/>
+    Avast, yer not scraping me without a booty! <br/>
+    Where is the stormy plank? <br/>
+    Ah, mighty strength! <br/>
+    Jolly, ooh. <br/>
+</p>
+<div class="footer">
+    <p>
+        Все права защищены &copy;&nbsp;2019 г. - <a href="https://geekbrains.ru" target="_blank">Go to geekbrains...</a>
+    </p>
+</div>
 </body>
 </html>
