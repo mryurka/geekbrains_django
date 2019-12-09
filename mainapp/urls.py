@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from django.urls import re_path
 from mainapp.views import main
 from mainapp.views import products
 from mainapp.views import contacts
@@ -21,6 +22,6 @@ from mainapp.views import contacts
 
 urlpatterns = [
     path(r'', main, name='main'),
-    path(r'products/', products, name='products'),
+    re_path(r'^products/(?P<product_category>\w+)/$', products, name='products'),
     path(r'contacts/', contacts, name='contacts'),
 ]

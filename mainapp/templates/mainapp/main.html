@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.ico"/>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/mainapp/css/styles.css">
-    <title>Главная страница</title>
-</head>
-<body>
-<div class="header">
-        <img class="logo" src="/static/img/logo.jpg" alt="Logo">
-        <ul class="menu">
-            <li><a href="{% url 'contacts' %}"> - Контакты - </a></li>
-            <li><a href="{% url 'products' %}"> - Продукты - </a></li>
-            <li><a href="{% url 'main' %}"> - Главная - </a></li>
-        </ul>
-</div>
-<h1 class="main test">Главная</h1>
-<p>
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} - {{ title|title }}{% endblock %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'mainapp/css/styles.css'%}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="main test">{{ title|upper }}</h1>
+    <h2 >Сегодня: {% now "d E Y" %}</h2>
+
+    <p>
     Where is the addled comrade? <br/>
     Avast, yer not scraping me without a booty! <br/>
     Where is the stormy plank? <br/>
     Ah, mighty strength! <br/>
     Jolly, ooh. <br/>
 </p>
-<div class="footer">
-    <p>
-        Все права защищены &copy;&nbsp;2019 г. - <a href="https://geekbrains.ru" target="_blank">Go to geekbrains...</a>
-    </p>
-</div>
-</body>
-</html>
+{% endblock %}
