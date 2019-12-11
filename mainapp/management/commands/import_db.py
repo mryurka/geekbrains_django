@@ -14,7 +14,6 @@ class Command(BaseCommand):
         sep = os.sep
         with open(os.path.join(base_dir, 'products.json'), encoding='utf-8') as input_json_file:
             data = json.load(input_json_file)
-            print(data)
         for key in data:
             new_category = ProductCategory(name=key)
             try:
