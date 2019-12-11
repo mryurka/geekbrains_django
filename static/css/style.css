@@ -145,7 +145,10 @@ a img:hover {
     padding-right: 50px;
     text-align: right;
 }
-
+a.active {
+    color: #fdfdfe;
+    background-color: #0f6674;
+}
 .footer > p {
     color: #95999c;
     font-size: 22px;
@@ -177,14 +180,20 @@ table td {
     background-color: transparent;
 }
 */
+.side_menu {
+    float: left;
+    width: 200px;
+    height: 100vh;
+}
+
 .catalog{
-    height: 200px;
+    min-height: 300px;
     padding: 5px 20px;
 }
 .catalog .goods{
     float: left;
     display: inline;
-    margin-right: 20px;
+    margin: 20px;
     text-align: center;
 }
 /*

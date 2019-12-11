@@ -1,0 +1,14 @@
+<div class="side_menu">
+    <ul class = "links-menu">
+        {% for link in links_menu %}
+            <li>
+                <a href = "{% url link.href link.product_category %}"
+                    {% if request.resolver_match.url_name == link.href and request.resolver_match.kwargs.product_category == link.product_category%}
+                    class = "active"
+                    {% endif %}>
+                    {{ link.name|upper }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

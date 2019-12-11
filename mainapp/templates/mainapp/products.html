@@ -1,45 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.ico"/>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>Продукты</title>
-</head>
-<body>
-<div class="header">
-    <img class="logo" src="/static/img/logo.jpg" alt="Logo">
-    <ul class="menu">
-        <li><a href="{% url 'contacts' %}"> - Контакты - </a></li>
-        <li><a href="{% url 'products' %}"> - Продукты - </a></li>
-        <li><a href="{% url 'main' %}"> - Главная - </a></li>
-    </ul>
-</div>
-<h1 class="main">Продукты</h1>
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} - {{ title|title }}{% endblock %}
+
+{% block content %}
+<h1 class="main">{{ title|upper }}</h1>
+    {% include 'mainapp/includes/inc_side_menu.html' %}
 <div class="catalog">
-    <h1>Наши товары</h1>
-    <div class="goods" id="0" data-name="Телек" data-price="10000">
-        <img src="/static/img/Xiaomi-TV_small.jpg" alt="TV"><br>
-        <button>Купить телек</button>
-    </div>
-    <div class="goods" id="1" data-name="Мобилафон" data-price="20000">
-        <img src="/static/img/smartphone_small.jpg" alt="Phone"><br>
-        <button>Купить мобилафон</button>
-    </div>
-    <div class="goods" id="2" data-name="Робосос" data-price="15000">
-        <img src="/static/img/robosos_small.jpg" alt="Robosos"><br>
-        <button>Купить робосос</button>
-    </div>
+    {% for product in product_list %}
+        <div class="goods" id="{{ product.0 }}" data-name={{ product.1 }} data-price={{ product.2 }}>
+            <img src="{% static product.3%}" alt="{{ product.1 }}"><br>
+            <button>Купить {{ product.1 }}</button>
+        </div>
+    {% endfor %}
     <!--<div class="basket">
         <table id="120">
         </table>
         <button>Очистить корзину</button>
     </div>-->
 </div>
-<div class="footer">
-    <p>
-        Все права защищены &copy;&nbsp;2019 г. - <a href="https://geekbrains.ru" target="_blank">Go to geekbrains...</a>
-    </p>
-</div>
-</body>
-</html>
+{% endblock %}

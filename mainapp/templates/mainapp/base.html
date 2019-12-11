@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Рога и копыта{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico'%}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    {% block extrahead %}
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+        <div class="header">
+            <img class="logo" src="{% static 'img/logo.jpg'%}" alt="Logo">
+            {% include 'mainapp/includes/inc_menu.html' %}
+        </div>
+    {% endblock %}
+    {% block content %}
+        <!-- Here is page content -->
+    {% endblock %}
+    {% block footer %}
+        <div class="footer">
+            <p>
+                Все права защищены &copy;&nbsp;2019 г. - <a href="https://geekbrains.ru" target="_blank">Go to geekbrains...</a>
+            </p>
+        </div>
+    {% endblock %}
+    {% block js %}
+    {% endblock %}
+</body>
+</html>
