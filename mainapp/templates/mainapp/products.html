@@ -8,9 +8,16 @@
     {% include 'mainapp/includes/inc_side_menu.html' %}
 <div class="catalog">
     {% for product in product_list %}
-        <div class="goods" id="{{ product.0 }}" data-name={{ product.1 }} data-price={{ product.2 }}>
-            <img src="{% static product.3%}" alt="{{ product.1 }}"><br>
-            <button>Купить {{ product.1 }}</button>
+        <div class="goods" id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">
+            <h4>{{ product.name|capfirst }}</h4>
+            {% if product.image %}
+                <img src="/media/{{ product.image }}" alt="{{ product.name }}"><br>
+            {% else %}
+                <img src="{% static '/img/no-photo_79.gif' %}" alt="Фото отсутствует"><br>
+            {% endif %}
+
+            <h5>Цена - {{ product.price }} руб.</h5>
+            <button>Купить {{ product.name }}</button>
         </div>
     {% endfor %}
     <!--<div class="basket">
