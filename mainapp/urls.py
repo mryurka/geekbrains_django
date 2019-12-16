@@ -19,6 +19,7 @@ from mainapp.views import main
 from mainapp.views import products
 from mainapp.views import contacts
 
+app_name = 'mainapp'
 
 urlpatterns = [
     path(r'', main, name='main'),

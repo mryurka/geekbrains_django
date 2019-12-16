@@ -15,6 +15,25 @@
             <img class="logo" src="{% static 'img/logo.jpg'%}" alt="Logo">
             {% include 'mainapp/includes/inc_menu.html' %}
         </div>
+        <ul>
+            {% if user.is_authenticated %}
+                <li>
+                    <div class = "user_avatar"><img width=50px height="50px" src="/media/{{ user.avatar }}" alt="Аватарка"></div>
+                </li>
+                <li>
+                    <a class="userBage" href = "{% url 'auth:edit' %}" >
+                        {{ user.first_name|default:'Пользователь' }}
+                    </a>
+                </li>
+            {% endif %}
+                <li>
+                    {% if user.is_authenticated %}
+                        <a class="userBage" href = "{% url 'auth:logout' %}" >выйти</a>
+                    {% else %}
+                        <a class="userBage" href = "{% url 'auth:login' %}" >войти</a>
+                    {% endif %}
+                </li>
+        </ul>
     {% endblock %}
     {% block content %}
         <!-- Here is page content -->

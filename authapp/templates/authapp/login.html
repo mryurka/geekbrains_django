@@ -1,0 +1,22 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block extrahead %}
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'css/bootstrap.min.css' %}">
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+    <br>
+    <form class = "form-horizontal" method="POST" action="{% url 'auth:login' %}">
+    {%  csrf_token %}
+    {{ login_form.as_table }}
+    <br>
+    <input class="form-control" type="submit" value="Войти">
+    <br>
+    </form>
+    <button class = "btn btn-round form-control">
+        <a href = "{% url 'auth:register' %}" class = "">
+        зарегистрироваться
+        </a>
+    </button>
+    <br>
+{% endblock %}

@@ -10,7 +10,7 @@
     {% for product in product_list %}
         <div class="goods" id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">
             <h4>{{ product.name|capfirst }}</h4>
-            {% if product.image %}
+            {% if product.image %} <!-- Поменять на {{ product.image.url }} -->
                 <img src="/media/{{ product.image }}" alt="{{ product.name }}"><br>
             {% else %}
                 <img src="{% static '/img/no-photo_79.gif' %}" alt="Фото отсутствует"><br>
