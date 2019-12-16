@@ -187,7 +187,7 @@ table td {
 }
 
 .catalog{
-    min-height: 300px;
+    min-height: 400px;
     padding: 5px 20px;
 }
 .catalog .goods{
@@ -195,6 +195,11 @@ table td {
     display: inline;
     margin: 20px;
     text-align: center;
+}
+
+.catalog .goods > h4, h5 {
+    margin-bottom: 5px;
+    margin-top: 1px;
 }
 /*
 div .basket{

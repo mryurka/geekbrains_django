@@ -1,12 +1,19 @@
 <div class="side_menu">
     <ul class = "links-menu">
-        {% for link in links_menu %}
-            <li>
-                <a href = "{% url link.href link.product_category %}"
-                    {% if request.resolver_match.url_name == link.href and request.resolver_match.kwargs.product_category == link.product_category%}
-                    class = "active"
+        <li>
+            <a href="{% url 'products' 'all'%}"
+                {% if request.resolver_match.kwargs.product_category == 'all' %}
+                        class = "active"
                     {% endif %}>
-                    {{ link.name|upper }}
+                ВСЕ КАТЕГОРИИ</a>
+        </li>
+        {% for cat in prod_cats %}
+            <li>
+                <a href = "{% url 'products' cat.id %}"
+                    {% if request.resolver_match.kwargs.product_category == cat.id|stringformat:'s' %}
+                        class = "active"
+                    {% endif %}>
+                    {{ cat.name|upper }}
                 </a>
             </li>
         {% endfor %}
