@@ -1,7 +1,7 @@
 <div class="side_menu">
     <ul class = "links-menu">
         <li>
-            <a href="{% url 'products' 'all'%}"
+            <a href="{% url 'mainapp:products' 'all'%}"
                 {% if request.resolver_match.kwargs.product_category == 'all' %}
                         class = "active"
                     {% endif %}>
@@ -9,7 +9,7 @@
         </li>
         {% for cat in prod_cats %}
             <li>
-                <a href = "{% url 'products' cat.id %}"
+                <a href = "{% url 'mainapp:products' cat.id %}"
                     {% if request.resolver_match.kwargs.product_category == cat.id|stringformat:'s' %}
                         class = "active"
                     {% endif %}>
