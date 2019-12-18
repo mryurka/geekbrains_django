@@ -1,8 +1,9 @@
 <div class="side_menu">
+    <a name="#ancor"></a>
     <ul class = "links-menu">
         <li>
-            <a href="{% url 'mainapp:products' 'all'%}"
-                {% if request.resolver_match.kwargs.product_category == 'all' %}
+            <a href="{% url 'mainapp:products' 0 %}"
+                {% if request.resolver_match.kwargs.category_pk == 0 %}
                         class = "active"
                     {% endif %}>
                 ВСЕ КАТЕГОРИИ</a>
@@ -10,7 +11,7 @@
         {% for cat in prod_cats %}
             <li>
                 <a href = "{% url 'mainapp:products' cat.id %}"
-                    {% if request.resolver_match.kwargs.product_category == cat.id|stringformat:'s' %}
+                    {% if request.resolver_match.kwargs.category_pk == cat.id %}
                         class = "active"
                     {% endif %}>
                     {{ cat.name|upper }}
@@ -18,4 +19,17 @@
             </li>
         {% endfor %}
     </ul>
+        {% if basket %}
+            <div class="basket">
+                <h3>ВАША КОРЗИНА</h3>
+                <ul>
+                    {% for slot in basket%}
+                        <li>
+                            {{ slot.get_product_name }} - {{ slot.get_quantity }} шт. {{ slot.get_cost }} руб.
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p>{{ basket|length }} товар(ов) на сумму - {{ total_cost }} руб</p>
+            </div>
+        {% endif %}
 </div>

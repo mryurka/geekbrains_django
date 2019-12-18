@@ -74,6 +74,10 @@ h3 {
     text-decoration: none; /* Убираем подчёркивание */
     color: #000; /* Цвет текста */
   }
+.purchase_button a {
+    text-decoration: none; /* Убираем подчёркивание */
+    color: #28a745; /* Цвет текста */
+  }
 .purchase_button:hover {
     box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
     background: linear-gradient(to bottom, #fcfff4, #e9e9ce); /* Градиент */
@@ -182,12 +186,27 @@ table td {
 */
 .side_menu {
     float: left;
-    width: 200px;
+    width: 300px;
     height: 100vh;
 }
+.basket {
+    margin-top: 5px;
+    margin-left: 10px;
+}
 
+.basket h3{
+    text-align: center;
+}
+
+.basket ul{
+    list-style-type: decimal;
+}
+
+.basket p{
+    text-align: center;
+}
 .catalog{
-    min-height: 400px;
+    min-height: 600px;
     padding: 5px 20px;
 }
 .catalog .goods{
