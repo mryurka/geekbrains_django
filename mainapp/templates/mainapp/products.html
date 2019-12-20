@@ -17,7 +17,12 @@
             {% endif %}
 
             <h5>Цена - {{ product.price }} руб.</h5>
-            <button>Купить {{ product.name }}</button>
+            <button class="purchase_button">
+                <a href="{% url 'basket:add' product.pk %}">Добавить</a>
+            </button>
+            <button class="purchase_button">
+                <a href="{% url 'basket:remove' product.pk %}">Удалить</a>
+            </button>
         </div>
     {% endfor %}
     <!--<div class="basket">

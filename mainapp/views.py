@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.urls import resolve
+# from django.urls import resolve
 from mainapp.models import ProductCategory
 from mainapp.models import Product
+from basket.models import BasketSlot
+# from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -13,40 +15,29 @@ def main(request):
     return render(request, 'mainapp/main.html', context)
 
 
-def products(request, **kwargs):
-    prod_cat = kwargs['product_category']
-
-    # links_menu = [
-    #     {'href': 'products', 'product_category': 'all', 'name': 'все'},
-    #     {'href': 'products', 'product_category': 'home', 'name': 'дом'},
-    #     {'href': 'products', 'product_category': 'office', 'name': 'офис'},
-    #     {'href': 'products', 'product_category': 'electronics', 'name': 'электроника'},
-    # ]
-
-    # all_products = {'home': [[3, 'стул', 2000, 'img/стул_79.jpg'],
-    #                          [4, 'стол', 10000, 'img/стол_79.jpg'],
-    #                          [5, 'таз', 150, 'img/таз_79.jpg']],
-    #                 'office': [[6, 'Офисное кресло', 100, 'img/офисное_кресло_79.jpg'],
-    #                            [7, 'Степлер', 300, 'img/степлер_79.jpg'],
-    #                            [8, 'Скрепки', 250, 'img/скрепки_79.jpg']],
-    #                 'electronics': [[9, 'телек', 10000, 'img/Xiaomi-TV_small.jpg'],
-    #                                 [10, 'мобилофон', 20000, 'img/smartphone_small.jpg'],
-    #                                 [11, 'робосос', 15000, 'img/robosos_small.jpg']]
-    #
-    #                 }
+def products(request, category_pk=0):
+    basket = None
+    total_cost = 0
 
     product_categories = ProductCategory.objects.all()
 
-    if prod_cat == 'all':
+    if category_pk == 0:
         product_list = Product.objects.all()
     else:
-        product_list = Product.objects.filter(category=prod_cat)
+        product_list = Product.objects.filter(category=category_pk)
+
+    if request.user.is_authenticated:
+        whole_basket = BasketSlot.objects.filter(user=request.user)
+        if whole_basket and len(whole_basket) > 0:
+            basket = whole_basket
+            for slot in whole_basket:
+                total_cost += slot.get_cost()
 
     context = {
         'title': 'наши продукты',
         'prod_cats': product_categories,
-        # 'links_menu': links_menu,
-        # 'prod_cat': prod_cat,
+        'basket': basket,
+        'total_cost': total_cost,
         'product_list': product_list,
     }
     return render(request, 'mainapp/products.html', context)
