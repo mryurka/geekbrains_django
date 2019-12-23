@@ -8,6 +8,7 @@
     <br>
     <form class = "form-horizontal" method="POST" action="{% url 'auth:login' %}">
     {%  csrf_token %}
+        <input type="hidden" name="url" value="{{ incoming_url }}">
     {{ login_form.as_table }}
     <br>
     <input class="form-control" type="submit" value="Войти">

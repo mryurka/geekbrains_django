@@ -12,17 +12,25 @@ from django.urls import reverse
 def login(request):
 
     title = 'вход'
+    target_url = reverse('mainapp:main')
+
+    if request.method == 'GET':
+        target_url = request.META.get('HTTP_REFERER')
 
     login_form = ShopUserLoginForm(data=request.POST)
+
     if request.method == 'POST' and login_form.is_valid():
         username = request.POST['username']
         password = request.POST['password']
+        target_url = request.POST['url']
 
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
             auth.login(request, user)  # Аутентификация считается успешной, если объект пользователя появился в request
-            return HttpResponseRedirect(reverse('mainapp:main'))
-    context = {'title': title, 'login_form': login_form}
+            return HttpResponseRedirect(target_url)
+
+    context = {'title': title, 'login_form': login_form, 'incoming_url': target_url}
+
     return render(request, 'authapp/login.html', context)
 
 

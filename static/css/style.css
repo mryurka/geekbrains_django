@@ -216,6 +216,11 @@ table td {
     text-align: center;
 }
 
+.hot_product{
+    background-color: red;
+    border-radius: 15px;
+}
+
 .catalog .goods > h4, h5 {
     margin-bottom: 5px;
     margin-top: 1px;
@@ -226,3 +231,8 @@ div .basket{
     padding: 5px 20px;
 }
 */
+
+.basket {
+    display: inline;
+    width: 30px;
+}

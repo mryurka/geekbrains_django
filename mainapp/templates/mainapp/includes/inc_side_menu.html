@@ -1,3 +1,4 @@
+{% load static %}
 <div class="side_menu">
     <a name="#ancor"></a>
     <ul class = "links-menu">
@@ -22,10 +23,13 @@
         {% if basket %}
             <div class="basket">
                 <h3>ВАША КОРЗИНА</h3>
-                <ul>
+                <ul class="basket_list">
                     {% for slot in basket%}
                         <li>
-                            {{ slot.get_product_name }} - {{ slot.get_quantity }} шт. {{ slot.get_cost }} руб.
+                            <span class = "product_name">{{ slot.product_name }}</span>
+                            <input class="basket" type="number" name="{{ slot.pk }}" min = "0"
+                                   value = "{{ slot.quantity }}"> - шт.
+                            <span class = "product_cost" > - {{ slot.cost }}&nbspруб</span>
                         </li>
                     {% endfor %}
                 </ul>
@@ -33,3 +37,5 @@
             </div>
         {% endif %}
 </div>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/basket.js' %}"></script>
