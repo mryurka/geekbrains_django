@@ -1,0 +1,7 @@
+<ul>
+    {% for category in categories %}
+        <li>
+            <a href="{% url 'adminapp:category' category.pk %}">{{ category.name }}</a>
+        </li>
+    {% endfor %}
+</ul>

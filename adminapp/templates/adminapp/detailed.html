@@ -1,0 +1,11 @@
+{% extends 'adminapp/adminAppBase.html'%}
+{% block body %}
+    <h1>{{ object.name }}</h1>
+    <h2>Картинка</h2>
+    <img src="/media/{{ object.image }}" alt="{{ object.name }}">
+    <h2>Описание продукта</h2>
+    <p>{{ object.description }}</p>
+    <p><a href="{% url 'adminapp:update' object.pk %}">- изменить продукт -</a></p>
+    <p><a href="{% url 'adminapp:delete' object.pk %}">- удалить продукт -</a></p>
+    <p><a href="{% url 'adminapp:product' %}">- назад к продуктам -</a></p>
+{% endblock %}
