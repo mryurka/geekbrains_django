@@ -8,8 +8,9 @@
     {% include 'mainapp/includes/inc_side_menu.html' %}
 <div class="catalog">
     {% for product in product_list %}
-        <div class="goods" id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">
-            <h4>{{ product.name|capfirst }}</h4>
+        <div class="goods {% if product.hot %} hot_product {% endif %}"
+             id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">
+            <h4>{{ product.name|capfirst }}{% if product.hot %} - % HOT %!{% endif %} </h4>
             {% if product.image %} <!-- Поменять на {{ product.image.url }} -->
                 <img src="/media/{{ product.image }}" alt="{{ product.name }}"><br>
             {% else %}

@@ -11,14 +11,13 @@ class BasketSlot(models.Model):
     quantity = models.PositiveIntegerField(verbose_name='Количество', default=0)
     add_time = models.DateTimeField(auto_now_add=True, verbose_name='время')
 
-    def get_quantity(self):
-        return self.quantity
-
-    def get_cost(self):
+    @property
+    def cost(self):
         cost = self.quantity * self.product.price
         return cost
 
-    def get_product_name(self):
+    @property
+    def product_name(self):
         return self.product.name
 
     def __str__(self):

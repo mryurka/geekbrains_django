@@ -1,0 +1,11 @@
+<div class="basket">
+    <h3>ВАША КОРЗИНА</h3>
+    <ul>
+        {% for slot in basket%}
+            <li>
+                {{ slot.get_product_name }} - {{ slot.get_quantity }} шт. {{ slot.get_cost }} руб.
+            </li>
+        {% endfor %}
+    </ul>
+    <p>{{ basket|length }} товар(ов) на сумму - {{ total_cost }} руб</p>
+</div>
