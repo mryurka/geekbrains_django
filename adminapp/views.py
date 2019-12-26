@@ -9,6 +9,8 @@ from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from mainapp.models import Product
 from mainapp.models import ProductCategory
+from authapp.models import ShopUser
+
 
 # Create your views here.
 
@@ -20,7 +22,7 @@ class IsUserAdminView(UserPassesTestMixin):
 
 class ProductListView(IsUserAdminView, ListView):
     model = Product
-    template_name = 'adminapp/products.html'
+    template_name = 'adminapp/list.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
@@ -76,3 +78,58 @@ class ProductDeleteView(IsUserAdminView, DeleteView):
     model = Product
     template_name = 'adminapp/delete_alarm.html'
     success_url = reverse_lazy('adminapp:product')
+
+
+# -------------------------------------------------------------------------------------#
+
+class UserListView(IsUserAdminView, ListView):
+    model = ShopUser
+    template_name = 'adminapp/list.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+        context.update({"title": 'Пользователи'})
+        return context
+
+
+class UserCreateView(IsUserAdminView, CreateView):
+    model = ShopUser
+    template_name = 'adminapp/update.html'
+    fields = '__all__'
+    success_url = reverse_lazy('adminapp:user')
+
+
+class UserUpdateView(IsUserAdminView, UpdateView):
+    model = ShopUser
+    template_name = 'adminapp/update.html'
+    fields = '__all__'
+    success_url = reverse_lazy('adminapp:user')
+
+
+class UserDeleteView(IsUserAdminView, DeleteView):
+    model = ShopUser
+    template_name = 'adminapp/delete_alarm.html'
+    success_url = reverse_lazy('adminapp:user')
+
+
+# -------------------------------------------------------------------------------------#
+class CategoryCreateView(IsUserAdminView, CreateView):
+    model = ProductCategory
+    template_name = 'adminapp/update.html'
+    fields = '__all__'
+    success_url = reverse_lazy('adminapp:product')
+
+
+class CategoryUpdateView(IsUserAdminView, UpdateView):
+    model = ProductCategory
+    template_name = 'adminapp/update.html'
+    fields = '__all__'
+    success_url = reverse_lazy('adminapp:product')
+
+
+class CategoryDeleteView(IsUserAdminView, DeleteView):
+    model = ProductCategory
+    template_name = 'adminapp/delete_alarm.html'
+    success_url = reverse_lazy('adminapp:product')
+
+

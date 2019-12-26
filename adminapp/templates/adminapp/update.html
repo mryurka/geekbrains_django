@@ -5,9 +5,5 @@
         {{ form.as_p}}
         <input type="submit" value="Готово!">
     </form>
-    {% if object.pk %}
-        <p><a href="{% url 'adminapp:detail' object.pk %}">Я передумал, назад...</a></p>
-    {% else %}
-        <p><a href="{% url 'adminapp:product' %}">Я передумал, назад...</a></p>
-    {% endif %}
+    <p><a href="{{ request.META.HTTP_REFERER }}">Я передумал, назад...</a></p>
 {% endblock %}
