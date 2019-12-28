@@ -1,0 +1,14 @@
+{% extends 'adminapp/adminAppBase.html' %}
+{% block body %}
+    <div>
+        <h1>Вы уверены что это нужно удалить? </h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="В топку её!">
+        </form>
+        <br>
+        <button>
+            <a href="{{ request.META.HTTP_REFERER }}">Я передумал, назад...</a>
+        </button>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'adminapp/adminAppBase.html' %}
+{% block body %}
+    {% if categories %}
+        <h2>Категории</h2>
+            <p><a href="{% url 'adminapp:cat_create' %}">- Создать -</a></p>
+            {% include "adminapp/includes/inc_cat_menu.html" %}
+        <h2>{{ title }}</h2>
+    {% endif %}
+    {% if title == 'Продукты' %}
+        <p><a href="{% url 'adminapp:create' %}">- Создать -</a></p>
+        <ul>
+        {%  for obj in object_list %}
+            <li>
+                <a href="{% url 'adminapp:update' obj.pk %}">{{ obj.pk }} - {{ obj }}</a>
+                <button><a href="{% url 'adminapp:delete' obj.pk %}"> - Удалить</a></button>
+            </li>
+        {% endfor %}
+    </ul>
+    {% elif title == 'Пользователи'%}
+        <p><a href="{% url 'adminapp:user_create' %}">- Создать -</a></p>
+        <ul>
+        {%  for obj in object_list %}
+            <li>
+                <a href="{% url 'adminapp:user_update' obj.pk %}">{{ obj.pk }} - {{ obj }}</a>
+                <button><a href="{% url 'adminapp:user_delete' obj.pk %}"> - Удалить</a></button>
+            </li>
+        {% endfor %}
+        </ul>
+
+    {% endif %}
+{%  endblock %}
+

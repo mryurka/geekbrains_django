@@ -1,0 +1,9 @@
+<ul>
+    {% for obj in categories %}
+        <li>
+            <a href="{% url 'adminapp:category' obj.pk %}">{{ obj.name|upper }}</a>
+            <button><a href="{% url 'adminapp:cat_update' obj.pk %}"> - Изменить</a></button>
+            <button><a href="{% url 'adminapp:cat_delete' obj.pk %}"> - Удалить</a></button>
+        </li>
+    {% endfor %}
+</ul>
