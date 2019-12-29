@@ -16,6 +16,9 @@ def login(request):
 
     if request.method == 'GET':
         target_url = request.META.get('HTTP_REFERER')
+        if request.GET.get('next'):
+            print(request.GET['next'])
+            target_url = request.GET.get('next')
 
     login_form = ShopUserLoginForm(data=request.POST)
 
@@ -23,8 +26,6 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         target_url = request.POST['url']
-        if request.POST.get('next'):
-            target_url = request.POSTget('next')
 
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:

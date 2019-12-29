@@ -18,7 +18,12 @@ from django.urls import include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-
+import debug_toolbar
+# if settings.DEBUG:
+#     import debug_toolbar
+#     urlpatterns = [
+#         path('__debug__/', include(debug_toolbar.urls)),]
+#
 
 urlpatterns = [
     path(r'', include('mainapp.urls', namespace='mainapp')),
@@ -26,6 +31,7 @@ urlpatterns = [
     path(r'', include('basket.urls', namespace='basket')),
     path(r'adminapp/', include('adminapp.urls', namespace='adminapp')),
     path(r'admin/', admin.site.urls),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 if settings.DEBUG:
