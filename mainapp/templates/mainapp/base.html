@@ -30,7 +30,7 @@
                     {% if user.is_authenticated %}
                         <a class="userBage" href = "{% url 'auth:logout' %}" >выйти</a>
                     {% else %}
-                        <a class="userBage" href = "{% url 'auth:login' %}" >войти</a>
+                        <a class="userBage" href = "{% url 'auth:login' %}" >войти/зарегистрироваться</a>
                     {% endif %}
                 </li>
         </ul>

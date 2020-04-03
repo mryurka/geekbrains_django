@@ -35,7 +35,7 @@ def basket_slot_add(request, product_pk):
         print(request.META.get('HTTP_REFERER'))
 
     if request.META.get('HTTP_REFERER') and request.META.get('HTTP_REFERER').find('login') > 0:
-        response_target = reverse(reverse('mainapp:products', args=[product.category_id]))
+        response_target = reverse('mainapp:products', args=[product.category_id])
         print(response_target)
     else:
         response_target = request.META.get('HTTP_REFERER')
