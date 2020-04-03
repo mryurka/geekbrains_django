@@ -1,0 +1,12 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<h3>Поздравляем! На ваш ящик ушло сообщение</h3>
+<br>
+<h4></h4>
+<h3>Проверьте почту, пожалуйста.</h3>
+<br>
+<button class="btn btn-round form-control">
+<a href="{% url 'mainapp:main' %}" class="">на главную</a>
+</button>
+{% endblock %}
