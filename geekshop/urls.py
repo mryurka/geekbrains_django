@@ -29,6 +29,7 @@ urlpatterns = [
     path(r'', include('mainapp.urls', namespace='mainapp')),
     path(r'', include('authapp.urls', namespace='auth')),
     path(r'', include('basket.urls', namespace='basket')),
+    path(r'verify/login/', include('social_django.urls', namespace='social')),
     path(r'adminapp/', include('adminapp.urls', namespace='adminapp')),
     path(r'admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),

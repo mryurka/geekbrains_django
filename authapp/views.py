@@ -31,7 +31,7 @@ def login(request):
 
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
-            auth.login(request, user)  # Аутентификация считается успешной, если объект пользователя появился в request
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # Аутентификация считается успешной, если объект пользователя появился в request
             return HttpResponseRedirect(target_url)
 
     context = {'title': title, 'login_form': login_form, 'incoming_url': target_url}
@@ -94,9 +94,9 @@ def verify(request, email, activation_key):
         if user.activation_key == activation_key and not user.is_activation_key_expired():
             user.is_active = True
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         else:
-            print(f'error activation user: {user} ' )
+            print(f'error activation user: {user} ')
         return render(request, 'authapp/verification.html')
     except Exception as e:
         print(f'error activation user : {e.args}')
