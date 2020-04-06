@@ -32,3 +32,18 @@ class ShopUser(AbstractUser):
     def __str__(self):
         return self.username
 
+
+class ShopUserProfile(models.Model):
+    MALE = 'M'
+    FEMALE = 'W'
+    GENDER_CHOICES = (
+        (MALE, 'М'),
+        (FEMALE, 'Ж'),
+    )
+    user = models.OneToOneField(ShopUser, unique=True, null=False, db_index=True, on_delete=models.CASCADE)
+    tagline = models.CharField(verbose_name='теги', max_length=128, blank=True)
+    aboutMe = models.TextField(verbose_name='о себе', max_length=512, blank=True)
+    gender = models.CharField(verbose_name='пол', max_length=1, choices=GENDER_CHOICES, blank=True)
+
+
+
