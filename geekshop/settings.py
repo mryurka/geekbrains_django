@@ -18,7 +18,7 @@ SECRET_KEY = LOCAL_CONFIG.get('main', 'SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = LOCAL_CONFIG.get('main', 'DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -46,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 INTERNAL_IPS = ['127.0.0.1']  # for debug_toolbars
@@ -131,6 +132,8 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media_root')
 AUTH_USER_MODEL = 'authapp.ShopUser'
 LOGIN_URL = '/login/'
 
+LOGIN_ERROR_URL = '/'
+
 # ------------------- Email settings BEGIN --------------------------
 DOMAIN_NAME = 'http://localhost:8000'
 EMAIL_HOST = 'localhost'
@@ -158,4 +161,19 @@ with open('vk.json', 'r') as f:
     VK = json.load(f)
     SOCIAL_AUTH_VK_OAUTH2_KEY = VK['SOCIAL_AUTH_VK_OAUTH2_KEY']
     SOCIAL_AUTH_VK_OAUTH2_SECRET = VK['SOCIAL_AUTH_VK_OAUTH2_SECRET']
+
+SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email', 'bdate', 'sex', 'about']
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.create_user',
+    'authapp.pipeline.save_user_profile',  # вручную создал файл pipeline.py и написал скрипт save_user_profile
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+)
 
