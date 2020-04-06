@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
-INTERNAL_IPS = ['127.0.0.1']  # for debug_toolbars
+INTERNAL_IPS = ['127.0.0.1', 'localhost']  # for debug_toolbars
 
 ROOT_URLCONF = 'geekshop.urls'
 
@@ -87,7 +87,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [ # отключено для удобства
+AUTH_PASSWORD_VALIDATORS = [  # отключено для удобства
     # {
     #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     # },
