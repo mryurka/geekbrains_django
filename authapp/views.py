@@ -1,3 +1,4 @@
+from django.db import transaction
 from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect
 from authapp.forms import ShopUserLoginForm, ShopUserProfileEditForm
@@ -63,6 +64,7 @@ def register(request):
     return render(request, 'authapp/register.html', context)
 
 
+@transaction.atomic
 def edit(request):
     title = 'редактирование'
 
@@ -72,7 +74,7 @@ def edit(request):
 
         if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
-            profile_form.save()
+            # profile_form.save() # moved into Model, signals
             return HttpResponseRedirect(reverse('auth:edit'))
     else:
         edit_form = ShopUserEditForm(instance=request.user)
