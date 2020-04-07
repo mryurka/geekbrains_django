@@ -6,6 +6,11 @@ from basket.models import BasketSlot
 admin.site.register(ShopUser)
 
 
+# @admin.register(ShopUser)
+# class JustShopUser(admin.ModelAdmin):
+#     readonly_fields = ('password',)
+
+
 class UserWithBasket(ShopUser):
     class Meta:
         verbose_name = 'Пользователь с корзиной'

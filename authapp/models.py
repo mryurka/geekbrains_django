@@ -1,11 +1,14 @@
-from django.db import models
+# import urllib
+import os
+from urllib.parse import urlparse
+from urllib.request import urlretrieve
 from datetime import timedelta
-
+from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.timezone import now
 from django.contrib.auth.models import AbstractUser
-
+from django.conf import settings
 # Create your models here.
 
 
@@ -31,6 +34,18 @@ class ShopUser(AbstractUser):
         #     return False
         # else:
         #     return True
+
+    def save(self, *args, **kwargs):
+        # print(f'kwargs --> {kwargs}')  # для отладки
+        if kwargs and kwargs.get('avatar_url'):
+            avatar_url = kwargs['avatar_url']
+            file_save_dir = os.path.join(settings.MEDIA_ROOT, 'user_avatars')
+            filename = (urlparse(avatar_url).path.split('/')[-1]).split('?')[0]
+            # print(f'filename --> {filename}')  # для отладки
+            res = urlretrieve(avatar_url, os.path.join(file_save_dir, filename))
+            # print('URLRETRIEVE -->', res)   # для отладки
+            self.avatar = os.path.join(file_save_dir, filename)
+        super().save()
 
     def __str__(self):
         return self.username
